@@ -1,0 +1,9 @@
+[flake8]
+
+# E501 line too long (83 > 79 characters)
+# F821 undefined name '_'
+
+exclude = .git
+max-line-length = 88
+per-file-ignores =
+    ./i.up42.import.py: E501, F821

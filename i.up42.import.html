@@ -1,0 +1,47 @@
+<h2>DESCRIPTION</h2>
+
+<em>i.up42.import</em> is a Python 3 script which uses the Python SDK for UP42.
+UP42 is a platform for Earth data and analytics. You have to sign in to UP42
+before using this GRASS GIS addon (<a href="https://up42.com/">https://up42.com/</a>).
+So far, only the download of the Pléiades data is supported by this addon.
+
+The download region can be defined by an input vector map <b>input</b> or a
+GeoJSON polygon <b>input_geojson</b>. Here it is important that the area size
+must be at least 0.1 sqkm.
+
+if <b>input_geojson</b> is used, the GeoJSON must be passed as string with a
+polygon, UP42 only allows one single feature and not multiple features inside
+a geojson file and also no multipolygons.
+
+With the flag <b>p</b> the credits of a process are estimated.
+
+<h2>EXAMPLES</h2>
+
+<h3>Estimate Credits for download of Pléiades data contained in a GeoJSON Polygon</h3>
+
+<div class="code"><pre>
+# setting authentication
+export UP42_PROJECT_ID=[PROJECT_ID]
+export UP42_PROJECT_API_KEY=[PROJECT_API_KEY]
+
+# polygon in GeoJSON format
+GEOJSON='{"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[7.095494270324707,50.742294306843085],[7.092854976654053,50.740447578361746],[7.098348140716552,50.73836992176511],[7.100987434387207,50.73957850446387],[7.098090648651123,50.7425794569557],[7.095494270324707,50.742294306843085]]]}}]}'
+
+# import of Pléiades in this polygon
+i.up42.import input_geojson="$GEOJSON" clouds=2 -p directory=vhr/ start=2020-04-01 end=2020-04-30 output=vhr
+</pre></div>
+
+<h2>SEE ALSO</h2>
+
+<em>
+<a href="r.import.html">r.import</a>
+</em>
+
+<h2>AUTHOR</h2>
+
+Anika Weinmann, <a href="https://www.mundialis.de/">mundialis</a>
+
+<!--
+<p>
+<i>Last changed: $Date$</i>
+-->
