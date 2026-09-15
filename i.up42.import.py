@@ -186,7 +186,7 @@ def check_start_end(start, end):
 
 def main():
 
-    global tmpfolder, rm_vectors, rm_rasters
+    global tmpfolder
 
     if options["input"] == "None":
         options["input"] = None
